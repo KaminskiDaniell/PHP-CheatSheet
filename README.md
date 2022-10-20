@@ -12,7 +12,7 @@ Zbiór najważniejszych informacji dotyczących podstaw programowania w języku 
 
 ## Lekcje
 
-1. [Czego potrzebujesz do uruchomienia PHP?](Lekcje/1.%20Czego%20potrzebujesz%20do%20uruchomienia%20PHP%3F.md)
+[1. Czego potrzebujesz do uruchomienia PHP?](Lekcje/1.%20Czego%20potrzebujesz%20do%20uruchomienia%20PHP%3F.md)
 2. [Pierwsza strona w PHP](Lekcje/2.%20Pierwsza%20strona%20w%20PHP.md)
 3. Zmienne i ich typy
 4. Tablice
