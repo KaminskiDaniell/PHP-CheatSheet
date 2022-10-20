@@ -18,10 +18,11 @@ Zbiór najważniejszych informacji dotyczących podstaw programowania w języku 
 4. Tablice
 5. Pętle
 6. Funkcje
-7. Praca z bazą danych MySQL
-8. Sesje
-9. Ciasteczka
-10. Przydatne wbudowane funkcje
+7. Obsługa formularzy
+8. Praca z bazą danych MySQL
+9. Sesje
+10. Ciasteczka
+11. Przydatne wbudowane funkcje
 
 ## Licencja
 
