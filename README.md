@@ -32,3 +32,4 @@ Zbiór najważniejszych informacji dotyczących podstaw programowania w języku 
 ## Źródła
 
  - [php.net](https://www.php.net/)
+ - [devdocs.io](https://devdocs.io/php/)
