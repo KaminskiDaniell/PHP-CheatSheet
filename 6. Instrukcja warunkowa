@@ -1,0 +1,116 @@
+## Wyrażenia
+
+**_Wyrażenia_** are evaluated into a result value or final value or single value. Najprostszy sposób na zdefiniowanie wyrażenia to "wszystko co ma wartość".
+
+```php
+<?php
+  $a = 12;
+  $b = 47;
+
+  $total = $a + $b;
+  echo $total; // 59
+```
+
+
+## Operatory
+
+Arytmetyczne | Przypisania | Porównania | Logiczne |
+------------ | ------------- | ------------- |  -------------
+Dodawania `+`| Addition assignment `+=` | Równe `==` | I `and`
+Odejmowania `-`| Subtraction assignment `-=` | Identyczne* `===` | LUB `or`
+Mnożenia `*`| Multiplication assignment `*=` | Nie równe `!=` | Xor `xor`
+Dzielenia `/`| Division assigment`/=` | Nie równe `<>` | NIE `!`
+Modulo `%`| Modulo assignment `%=` | Nie identyczne `!==` | ORAZ `&&`
+Potęgowania `**`| String Concatenation `.=` | Mniejsze niż `<` | LUB `||`
+Negacji `-`|  Null Coalesce `??=` | Większe niż `>` |
+| Bitwise And `&=` | Mniejsze lub równe `<=` | 
+| Bitwise Or `l=` | Większe lub równe `>=` |
+| Bitwise Xor `^=` |
+| Left Shift `<<=` | 
+| Right Shift `>>=` |
+
+
+> **Note:** The pipe symbol `|` is replaced by letter `l` to avoid bug in the table. 
+
+<p align="right">
+  <a href="https://github.com/gabriel-cacayan/php-cheatsheet#table-of-contents"> 
+  <strong><span>&#8613;</span> Back To Top</strong>
+  </a>
+</p>
+
+## Control Structures
+
+### elseif/else if
+
+```php
+<?php
+
+    $a = 5;
+    $b = 10;
+
+  if ($a > $b) {
+    echo "a is bigger than b";
+  } elseif ($a < $b) {
+    echo "b is bigger than a";
+  }  else {
+    echo "Invalid Input!";
+  }
+
+  // Outputs: b is bigger than a
+```
+
+### ternary operator
+
+```php
+<?php
+   $a = 5;
+   $b = 10;
+
+  echo $a > $b ? "a is greater than b": "b is greater than a";
+
+  // Outputs: b is bigger than a
+```
+
+### switch
+
+```php
+<?php
+
+    $i = 2;
+
+    switch ($i) {
+      case 0:
+          echo "i equals 0";
+          break;
+      case 1:
+          echo "i equals 1";
+          break;
+      case 2:
+          echo "i equals 2";
+          break;
+  }
+
+   // i equals 2
+```
+
+### Alternative syntax for control structures
+
+PHP offers an alternative syntax for some of its control structures; namely, if, while, for, foreach, and switch. In each case, the basic form of the alternate syntax is to change the opening brace to a colon (:) and the closing brace to endif;, endwhile;, endfor;, endforeach;, or endswitch;, respectively.
+
+```php
+<?php
+  
+  $a = 5;
+
+  if ($a == 5):
+      echo "a equals 5";
+      echo "...";
+  elseif ($a == 6):
+      echo "a equals 6";
+      echo "!!!";
+  else:
+      echo "a is neither 5 nor 6";
+  endif;
+
+  // outputs: a equals 5...
+```
