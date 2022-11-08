@@ -8,6 +8,7 @@ Zbiór najważniejszych informacji dotyczących podstaw programowania w języku 
 
 - [@KaminskiDaniell](https://www.github.com/kaminskidaniell)
 - [@TheGoldyOne](https://www.github.com/thegoldyone)
+- [Piotr Gawryl](https://www.facebook.com/piotr.gawryl.3)
 
 
 ## Lekcje
