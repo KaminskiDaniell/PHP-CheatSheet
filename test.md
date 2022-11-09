@@ -9,34 +9,31 @@
 - [Typy zmiennych](https://github.com/gabriel-cacayan/php-cheatsheet#data-types)
 - [Zmienne](https://github.com/gabriel-cacayan/php-cheatsheet#variables)
   - [Predefiniowane zmienne](https://github.com/gabriel-cacayan/php-cheatsheet#predefined-variables)
-  - [Variable scope](https://github.com/gabriel-cacayan/php-cheatsheet#variable-scope)
-  - [Variable variables](https://github.com/gabriel-cacayan/php-cheatsheet#variable-variables)
-- [Constants](https://github.com/gabriel-cacayan/php-cheatsheet#constants)
-  - [Magic constants](https://github.com/gabriel-cacayan/php-cheatsheet#magic-constants)
-- [Expressions](https://github.com/gabriel-cacayan/php-cheatsheet#expressions)
-- [Operators](https://github.com/gabriel-cacayan/php-cheatsheet#operators)
-- [Control Structures](https://github.com/gabriel-cacayan/php-cheatsheet#control-structures)
-  - [elseif/else if](https://github.com/gabriel-cacayan/php-cheatsheet#elseifelse-if)
-  - [ternary operator](https://github.com/gabriel-cacayan/php-cheatsheet#ternary-operator)
+  - [Zakres zmiennych](https://github.com/gabriel-cacayan/php-cheatsheet#variable-scope)
+  - [Podwójne zmienne](https://github.com/gabriel-cacayan/php-cheatsheet#variable-variables)
+- [Stałe](https://github.com/gabriel-cacayan/php-cheatsheet#constants)
+  - [Magiczne stałe](https://github.com/gabriel-cacayan/php-cheatsheet#magic-constants)
+- [Wyrażenia](https://github.com/gabriel-cacayan/php-cheatsheet#expressions)
+- [Operatory](https://github.com/gabriel-cacayan/php-cheatsheet#operators)
+- [Instrukcje warunkowe](https://github.com/gabriel-cacayan/php-cheatsheet#control-structures)
+  - [if, else, elsif](https://github.com/gabriel-cacayan/php-cheatsheet#elseifelse-if)
+  - [if jednolinijowy](https://github.com/gabriel-cacayan/php-cheatsheet#ternary-operator)
   - [switch](https://github.com/gabriel-cacayan/php-cheatsheet#switch)
-  - [Alternative syntax for control structures](https://github.com/gabriel-cacayan/php-cheatsheet#alternative-syntax-for-control-structures)
+  - [Alternatywna składnia dla instrukcji warunkowej](https://github.com/gabriel-cacayan/php-cheatsheet#alternative-syntax-for-control-structures)
   - [for](https://github.com/gabriel-cacayan/php-cheatsheet#for)
   - [while](https://github.com/gabriel-cacayan/php-cheatsheet#while)
-  - [do-while](https://github.com/gabriel-cacayan/php-cheatsheet#do-while)
+  - [do while](https://github.com/gabriel-cacayan/php-cheatsheet#do-while)
   - [foreach](https://github.com/gabriel-cacayan/php-cheatsheet#foreach)
   - [break](https://github.com/gabriel-cacayan/php-cheatsheet#break)
   - [continue](https://github.com/gabriel-cacayan/php-cheatsheet#continue)
   - [include](https://github.com/gabriel-cacayan/php-cheatsheet#include)
   - [require](https://github.com/gabriel-cacayan/php-cheatsheet#require)
-- [Arrays](https://github.com/gabriel-cacayan/php-cheatsheet#arrays)
-  - [Associative Arrays](https://github.com/gabriel-cacayan/php-cheatsheet#associative-arrays)
-- [Functions](https://github.com/gabriel-cacayan/php-cheatsheet#functions)
-  - [Anonymous functions](https://github.com/gabriel-cacayan/php-cheatsheet#anonymous-functions)
-  - [Arrow functions](https://github.com/gabriel-cacayan/php-cheatsheet#arrow-functions)
-  - [Internal (built-in) functions](https://github.com/gabriel-cacayan/php-cheatsheet#internal-built-in-functions)
-    - [Variable handling](https://github.com/gabriel-cacayan/php-cheatsheet#variable-handling)
-    - [String Functions](https://github.com/gabriel-cacayan/php-cheatsheet#string-functions)
-    - [Array Functions](https://github.com/gabriel-cacayan/php-cheatsheet#array-functions)
+- [Tablice](https://github.com/gabriel-cacayan/php-cheatsheet#arrays)
+  - [Tablice asocjacyjne](https://github.com/gabriel-cacayan/php-cheatsheet#associative-arrays)
+- [Funkcje](https://github.com/gabriel-cacayan/php-cheatsheet#functions)
+  - [Wbudowane funkcje](https://github.com/gabriel-cacayan/php-cheatsheet#internal-built-in-functions)
+    - [Praca na zmiennych](https://github.com/gabriel-cacayan/php-cheatsheet#variable-handling)
+    - [Funkcje do pracy z ciągami znaków ](https://github.com/gabriel-cacayan/php-cheatsheet#string-functions)
 
 
 **PHP** (skrót od PHP: Hypertext Preprocessor) jest szeroko stosowanym językiem skryptowym ogólnego przeznaczenia o otwartym kodzie źródłowym, który szczególnie nadaje się do tworzenia stron internetowych i może być osadzony w HTML.
@@ -599,125 +596,146 @@ Polecenie `continue` działa podobnie do `break`. Pomija ono iterację pętli ni
 
 ### include
 
+Include to instrukcja, dzięki której możemy importować skrypty w PHP do naszego pliku.
+
+>Struktura pliku index.php
 ```php
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Example</title>
+        <title>Strona Include</title>
     </head>
     <body>
-        /* 
-            1.) Including navbar file 
-            2.) Error message will occured when there is no file, but the web 
-            will still execute.
-        */
         <?php include "navbar.php"; ?>
         <?php
-            echo "Hi, I'm a PHP script!";
+            echo "Tekst pod paskiem nawigacyjnym!";
         ?>
-
     </body>
 </html>
 ```
+
+>Struktura pliku navbar.php
+```php
+<?php
+  <header>
+    <a href="strona1.php">Strona 1</a>
+    <a href="strona2.php">Strona 2</a>
+    <a href="strona3.php">Strona 3</a>
+  </header>
+?>
+```
+
+Po otworzeniu strony w przeglądarce zostanie wyświetlona strona w postaci:
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Strona Include</title>
+    </head>
+    <body>
+        <header>
+            <a href="strona1.php">Strona 1</a>
+            <a href="strona2.php">Strona 2</a>
+            <a href="strona3.php">Strona 3</a>
+        </header>
+            Tekst pod paskiem nawigacyjnym!
+    </body>
+</html>
+```
+
 
 ### require
 
+Instrukcja require działa praktycznie tak samo jak instrukcja include. Jedyna różnica to zmiana nazwy instrukcji.
+
 ```php
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Example</title>
+        <title>Strona require</title>
     </head>
     <body>
-         /* 
-            1.) Including navbar file 
-            2.) Error message will occured when there is no file for whole page. 
-        */
         <?php require "navbar.php"; ?>
         <?php
-            echo "Hi, I'm a PHP script!";
+            echo "Strona używająca instrukcji require!";
         ?>
 
     </body>
 </html>
 ```
 
-<p align="right">
-  <a href="https://github.com/gabriel-cacayan/php-cheatsheet#table-of-contents"> 
-  <strong><span>&#8613;</span> Back To Top</strong>
-  </a>
-</p>
+## Tablice
 
-## Arrays
-
-An array in PHP is actually an ordered map. A map is a type that associates values to keys. This type is optimized for several different uses; it can be treated as an array, list (vector), hash table (an implementation of a map), dictionary, collection, stack, queue, and probably more. As array values can be other arrays, trees and multidimensional arrays are also possible.
+Tablica w języku PHP to w zasadzie uporządkowana mapa. Mapa jest typem, który przypisuje wartości do kluczy. Ten typ jest zoptymalizowany pod wiele różnych użyć:
+- może być tablicą.
+- listą (wektory),
+- tablicą hashy,
+- słownikiem,
+- kolekcją
+- kolejką,
+- i wiele innych.
+Wartościami tablicy mogą być inne tablice. Dzięki temu rozwiązaniu możemy tworzyć wielowymiarowe tablice
 
 ```php
-// PHP Version: < 5.4
-$fruits = array("Apple", "Orange", "Banana");
+$fruits = array("Jabłko", "Pomarańcz", "Banan", "Granat");
 
 
 /* 
-    Using the short array syntax
-
-    PHP Version: >= 5.4
+    Krótsza forma utworzenia tablicy
 */
 
-$fruits = ["Apple", "Orange", "Banana"];
+$fruits = ["Jabłko", "Pomarańcz", "Banan"];
 
 foreach ($fruits as $fruit) {
     var_dump($fruit);
-    echo "<br>";
 }
 
 /* 
-    Outputs: 
+    Wynik: 
 
-    string(5) "Apple"
-    string(6) "Orange"
-    string(6) "Banana"
+    string(6) "Jabłko"     // typ string o długości 6 znaków
+    string(9) "Pomarańcz"  // typ string o długości 9 znaków
+    string(5) "Banan"      // typ string o długości 5 znaków
 
 */      
 ```
 
-### Associative Arrays
+## Tablice asocjacyjne
 
-Associative arrays are arrays that use named keys that you assign to them.
+Tablice asocjacyjne to takie, w których klucze mogą być ciągami znaków zamiast cyfr np. "owoc1" zamiast "1"
 
 ```php
 <?php 
-// To loop through and print all the values of an associative array, you could use a foreach loop, like this:
+// Aby wypisać wszystkie wartości z tablicy asocjacyjnej, należy użyć pętli foreach w sposób podany poniżej:
 
 $persons = [
-  "Peter" => "35", 
-  "Ben" => "37", 
-  "Joe "=> "43"
+  "Piotr" => "51", 
+  "Jakub" => "25", 
+  "Bartosz"=> "13.5"  
 ];
 
 foreach ($persons as $name => $age) {
-  echo "My name is $name and my age is $age.";
+  echo "Mam na imię $name, mam $age lat.";
   echo "<br>";
 }
 
 /* 
-    Outputs: 
+    Wyjście: 
 
-    My name is Peter and my age is 35
-    My name is Ben and my age is 37
-    My name is Joe and my age is 43
+    Mam na imię Piotr, mam 51 lat.
+    Mam na imię Jakub, mam 25 lat.
+    Mam na imię Bartosz, mam 13.5 lat.
 
 */  
 ```
 
-<p align="right">
-  <a href="https://github.com/gabriel-cacayan/php-cheatsheet#table-of-contents"> 
-  <strong><span>&#8613;</span> Back To Top</strong>
-  </a>
-</p>
+## Funkcje
 
-## Functions
+Funkcja to wydzielona część programu, która przetwarza argumenty i ewentualnie zwraca wartość, która następnie może być wykorzystana, jako argument w innych 
+działaniach lub funkcjach. Funkcja może posiadać własne zmienne lokalne.
 
-function with default arguments.
+
+W funkcjach możemy zdefiniować wartości domyślne w przypadku, kiedy nie zostaną podane wszystkie parametry funkcji
 
 ```php
 <?php
@@ -727,86 +745,25 @@ function with default arguments.
     }
 
 
-  echo add(10,5); // 15
-  echo add(); // 0
+  echo add(10,5);   // Wyjście: 15
+  echo add();       // Wyjście: 0
 ```
 
-### Anonymous functions
 
-**_Anonymous functions_**, also known as **closures**, allow the creation of functions which have no specified name. They are most useful as the value of callback parameters, but they have many other uses.
+### Wbudowane funkcje
 
-```php
-<?php
-  
-  $add = function($a = 0, $b = 0) {
-      return $a + $b;
-    };
+#### Praca na zmiennych
 
-
-echo $add(10,5);  // 15
-?>
-```
-
-```php
-<?php
-  //global variable
-  $ten = 10;
-
-  $add = function($a) use ($ten){
-        return $a + $ten;
-      };
+Nazwa         | Opis 
+------------  | ------------- 
+`empty`       | Sprawdza, czy zmienna jest pusta.
+`isset`       | Sprawdza czy zmienna jest zadeklarowana oraz czy jest różna od NULL
+`print_r`     | Wyświetla czytelne informacje o zmiennej
+`unset`       | Usuwa zmienną z pamięci
+`var_dump`    | Wyświetla techniczne informacje o zmiennej
 
 
-  echo $add(10); // 20  
-
-?>
-```
-
-### Arrow Functions
-
-Arrow functions were introduced in PHP 7.4 as a more concise syntax for anonymous functions.
-
-```php
-<?php
-
-   $fn = fn($x, $y) => $x + $y;
- 
-  echo $fn(10,5); // 15
-```
-
-### Internal (built-in) functions
-
-#### Variable handling 
-
-Name | Description 
------------- | ------------- 
-`empty` | Determine whether a variable is empty
-`gettype` | Get the type of a variable
-`is_array` | Finds whether a variable is an array
-`is_bool`| Finds out whether a variable is a boolean
-`is_double` | Alias of is_float
-`is_float` | Finds whether the type of a variable is float
-`is_int` | Find whether the type of a variable is integer
-`is_integer` | Alias of is_int
-`is_long` | Alias of is_int
-`is_null` | Finds whether a variable is NULL
-`is_numeric` | Finds whether a variable is a number or a numeric string
-`is_object` | Finds whether a variable is an object
-`is_real` | Alias of is_float
-`is_scalar` | Finds whether a variable is a scalar
-`is_string` | Find whether the type of a variable is string
-`isset` | Determine if a variable is declared and is different than NULL
-`print_r` | Prints human-readable information about a variable
-`settype` | Set the type of a variable
-`unset` | Unset a given variable
-`var_dump` | Dumps information about a variable
-
-<p align="right">
-  <a href="https://www.php.net/manual/en/book.var.php" target="_blank"> 
-  Reference</a>
-</p>
-
-##### Example:
+##### Przykład:
 
 ```php
 <?php
@@ -817,223 +774,46 @@ Name | Description
   $arr = [1,2,3,4,5];
   $anInteger = 10;
 
-  // Check whether the variable has value or none.
-  var_dump(empty($progLan)) . "<br>"; // bool(false)
-  var_dump(isset($progLan)) . "<br>"; // bool(true)
-
-  // Check the Data type of the variable.
-  echo gettype($progLan) . "<br>"; // string
-  var_dump(is_array($arr)) . "<br>"; // bool(true)
-  var_dump(is_bool($boolean)) . "<br>"; // bool(true)
-  var_dump(is_double($number)) . "<br>"; // bool(true)
-  var_dump(is_float($number)) . "<br>"; // bool(true)
-  var_dump(is_int($number)) . "<br>"; // bool(false)
-  var_dump(is_integer($anInteger)) . "<br>"; // bool(true)
-  var_dump(is_long($number)) . "<br>"; // bool(false)
-  var_dump(is_null($number)) . "<br>"; // bool(false)
-  var_dump(is_numeric($number)) . "<br>"; // bool(true)
-  var_dump(is_object($arr)) . "<br>"; // bool(false)
-  var_dump(is_real($number)) . "<br>"; // bool(true)
-  var_dump(is_scalar($progLan)) . "<br>"; // bool(true)
-  var_dump(is_string($progLan)) . "<br>"; // bool(true)
+  // Sprawdza czy zmienna jest zadeklarowana z jakąś wartością.
+  var_dump(empty($progLan)) . "<br>";    // bool(false) - zmienna $progLan nie jest pusta
+  var_dump(isset($progLan)) . "<br>";    // bool(true) - zmienna $progLan jest zadeklarowana
   
 
-  // Displaying variable's value
-  print_r($number); // 1.25
-  var_dump(10); // int(10)
+  // Wyświetlanie wartości zmiennych
+  print_r($number);    // 1.25
+  var_dump(10);        // int(10)
 ```
 
-#### String Functions 
+#### Funkcje do pracy z ciągami znaków 
 
-Name | Description 
------------- | ------------- 
-`echo()` | Output one or more strings
-`htmlentities()` | Convert all applicable characters to HTML entities
-`implode()` | Join array elements with a string
-`join()` | Alias of implode
-`lcfirst()` | Make a string's first character lowercase
-`ltrim()` | Strip whitespace (or other characters) from the beginning of a string
-`print()` | Output a string
-`printf()` | Output a formatted string
-`rtrim()` | Strip whitespace (or other characters) from the end of a string
-`str_ireplace()` | Case-insensitive version of str_replace
-`str_pad()` | Pad a string to a certain length with another string
-`str_repeat()` | Repeat a string
-`str_replace()` | Replace all occurrences of the search string with the replacement string
-`str_shuffle()` | Randomly shuffles a string
-`str_split()` | Convert a string to an array
-`str_word_count()` | Return information about words used in a string
-`strlen()` | Get string length
-`strpbrk()` | Search a string for any of a set of characters
-`strpos()` | Find the position of the first occurrence of a substring in a string
-`strrchr()` | Find the last occurrence of a character in a string
-`strrev()` | Reverse a string
-`strripos()` | Find the position of the last occurrence of a case-insensitive substring in a string
-`strrpos()` | Find the position of the last occurrence of a substring in a string
-`strstr()` | Find the first occurrence of a string
-`strtolower()` | Make a string lowercase
-`strtoupper()` | Make a string uppercase
-`substr()` | Return part of a string
-`trim()` | Strip whitespace (or other characters) from the beginning and end of a string
-`ucfirst()` | Make a string's first character uppercase
-`ucwords()` | Uppercase the first character of each word in a string
+Nazwa           | Opis 
+------------    | ------------- 
+`echo()`        | Wyświetla ciąg znaków
+`print()`       | Wyświetla ciąg znaków
+`str_replace()` | Zamienia wszystkie wartości w podanym ciągu znaków
+`strtolower()`  | Zamienia ciąg znaków na małe znaki
+`strtoupper()`  | Zamienia ciąg znaków na duże znaki
+`substr()`      | Zwraca część ciągu znaków
 
-<p align="right">
-  <a href="https://www.php.net/manual/en/book.strings.php" target="_blank"> 
-  Reference</a>
-</p>
 
-##### Example:
+##### Przykład:
 
 ```php
 <?php
 
   $progLan = "PHP";
-  $script = "<script>Harmful script</script>";
   $arr = [1,2,3,4,5];
-  $longText = "I love programming because, it is fun!";
-  $vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
+  $longText = "Lubię programować w PHP!";
+  $vowels = ["p", "r", "o", "g", "r", "a", "m"];
 
-  printf("entities: %s <br>", htmlentities($script)); // &lt;script&gt;Harmful script&lt;/script&gt;
-  printf("pad: %s <br>", str_pad("Hello", 10, "!!", STR_PAD_BOTH));  // !!Hello!!!
-  printf("repeat: %s <br>", str_repeat("love", 5)); // lovelovelovelovelove
-  print_r(str_split($progLan)); // Array ( [0] => P [1] => H [2] => P )
-  echo "<br>";
-  printf("search: %s <br>",strpbrk($longText, "f")); // fun!
-  printf("pos: %d <br>",strpos($longText, "love")); // 2
+  print ("Witaj świecie!") . "<br>";                                // Hello, World!
 
-  // Outputing string in different format.
-  print ("print: Hello, World!") . "<br>"; // Hello, World!
-  printf ("printf: %s <br>", $progLan); // The PHP is cool!
+  // Wyszukwianie pierwszego przypadku
+  print(substr($longText, 2, 4));                                   // programować
 
-  // Finding the first occurrence of a string.
-  printf("firstOcc: %s <br>",strstr($longText, "m")); // mming because, it is fun
+  // Zwraca podmieniony ciąg znaków
+  print(str_replace($vowels, "", $longText));                       //  Lubię wć w PHP!!
 
-  //  Finding the last occurrence of a string that is case sensitive and not.
-  printf("lastiOcc: %d <br>",strripos($longText, "M")); // 14
-  printf("lastOcc: %d <br>",strrpos($longText, "m")); // 14
-  printf("lastOccu2: %s <br>",strrchr($longText, "m")); // ming because, it is fun!
-
-  // Reverse or Shuffle the string
-  printf("shuffle: %s <br>", str_shuffle($longText)); // random text
-  printf("reverse: %s <br>", strrev($longText)); // !nuf si ti ,esuaceb gnimmargorp evol I
-
-  // Slicing the string
-  printf("slice: %s <br>",substr($longText, 2, 4)); // love
-
-  // Returns a replaced word.
-  printf("iReplace: %s <br>",str_ireplace("%body%", "black", "<body text=%BODY%>")); // <body text=black>
-  printf("replace: %s <br>",str_replace($vowels, "", $longText)); //  lv prgrmmng bcs, t s fn!
-
-  // Returns the length of a string.
-  printf("length: %d <br>", strlen($longText)); // 38
-  printf("word count: %d <br>", str_word_count($longText)); // 7
-
-  // Changing the text to upper or lower case.
-  printf("upperFirst: %s <br>" ,ucfirst($longText)); // I love programming because, it is fun!
-  printf("upperWords: %s <br>", ucwords($longText)); // I Love Programming Because, It Is Fun!
-  printf("toLower: %s <br>", strtolower($longText)); // i love programming because, it is fun!
-  printf("toUpper: %s <br>", strtoupper($longText)); // I LOVE PROGRAMMING BECAUSE, IT IS FUN!
-
-  // Returns removed whitespaces
-  printf("leftTrim: %s <br>", ltrim("             Hello, World!")); // Hello, World!
-  printf("rightTrim: %s <br>", rtrim("Text with whitespace!              ")); // Text with whitespace!
-  printf("trim: %s <br>", trim(" Text with whitespace.       ")); // Text with whitespace.
+  print(strtolower($longText));            // lubię programować w php!
+  print(strtoupper($longText));            // LUBIĘ PROGRAMOWAĆ W PHP!
 ```
-
-#### Array Functions 
-
-Name | Description 
------------- | ------------- 
-`array_filter()` | Filters elements of an array using a callback function
-`array_map()` | Applies the callback to the elements of the given arrays
-`array_reduce()` | Iteratively reduce the array to a single value using a callback function
-`array_reverse()` | Return an array with elements in reverse order
-`array_push()` | Push one or more elements onto the end of array
-`array_pop()` | Pop the element off the end of array
-`array_shift()` | Shift an element off the beginning of array
-`array_unshift()` | Prepend one or more elements to the beginning of an array
-`count()` | Count all elements in an array, or something in an object
-`array_replace()` | Replaces elements from passed arrays into the first array
-`array_slice()` | Extract a slice of the array
-`array_splice()` | Remove a portion of the array and replace it with something else
-`array_search()` | Searches the array for a given value and returns the first corresponding key if successful
-`array_key_exists()` | Checks if the given key or index exists in the array
-
-<p align="right">
-  <a href="https://www.php.net/manual/en/book.array.php" target="_blank"> 
-  Reference</a>
-</p>
-
-##### Example:
-
-```php
-  <?php
-
-  $arr = [1,2,3,4,5,6,7,8,9,10];
-
-
-  function Even($var) {
-    return $var%2 == 0;
-  }
-
-  function Odd($var) {
-    return $var%2 == 1;
-  }
-
-  function sum($carry, $item) {
-      $carry += $item;
-      return $carry;
-  }
-
-  function squre($var){
-    return $var * $var;
-  }
-
-  // filtering elements
-  print_r(array_filter($arr, "Even")); // Array ( [1] => 2 [3] => 4 [5] => 6 [7] => 8 [9] => 10 )
-  echo "<br>";
-  print_r(array_filter($arr, "Odd"));  // Array ( [0] => 1 [2] => 3 [4] => 5 [6] => 7 [8] => 9 )
-  echo "<br>";
-
-  // modifying array elements
-  print_r(array_map("squre", $arr)); // Array ( [0] => 1 [1] => 4 [2] => 9 [3] => 16 [4] => 25 [5] => 36 [6] => 49 [7] => 64 [8] => 81 [9] => 100 )
-  echo "<br>";
-
-  // reduce
-  var_dump(array_reduce($arr, "sum")); // int(55)
-  echo "<br>";
-
-  // Reversing an array
-  print_r(array_reverse($arr)); // Array ( [0] => 10 [1] => 9 [2] => 8 [3] => 7 [4] => 6 [5] => 5 [6] => 4 [7] => 3 [8] => 2 [9] => 1 )
-  echo "<br>";
-
-  // Adding element to the end of array
-  array_push($arr, 11); 
-  print_r($arr); 
-  echo "<br>";
-
-  // Removing element to the end of array
-  array_pop($arr);
-  print_r($arr);
-  echo "<br>";
-
-  // Adding element to the start of array
-  array_unshift($arr, 0);
-  print_r($arr);
-  echo "<br>";
-
-  // Removing element to the start of array
-  array_shift($arr);
-  print_r($arr); 
-  echo "<br>";
-
-  // Count of element in the array
-  var_dump(count($arr)); // int(10)
-```
-
-<p align="right">
-  <a href="https://github.com/gabriel-cacayan/php-cheatsheet#table-of-contents"> 
-  <strong><span>&#8613;</span> Back To Top</strong>
-  </a>
-</p>
